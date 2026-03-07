@@ -1,0 +1,19 @@
+services:
+  portefolio-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: ["dotnet", "watch", "--project", "front-end-portefolio.csproj", "run", "--no-restore", "--no-launch-profile", "--urls", "http://0.0.0.0:8080"]
+    stdin_open: true
+    tty: true
+    ports:
+      - "5001:8080"
+    volumes:
+      - .:/app
+      - /app/bin
+      - /app/obj
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:8080
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+      - DOTNET_WATCH_SUPPRESS_LAUNCH_BROWSER=true

@@ -1,0 +1,15 @@
+FROM mcr.microsoft.com/dotnet/sdk:8.0
+
+WORKDIR /app
+
+#Copie le projet ( au moment du build )
+COPY . .
+
+#Restaure les dépendances
+RUN dotnet restore front-end-portefolio.csproj
+
+#Expose le port de l'application
+EXPOSE 8080
+
+#Lancer l'application en mode développement avec hot reload
+CMD ["dotnet", "watch", "--project", "front-end-portefolio.csproj", "run", "--no-restore", "--no-launch-profile", "--urls", "http://0.0.0.0:8080"]
