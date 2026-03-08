@@ -1,0 +1,56 @@
+<article class="content-project-page" aria-label="Contenu de la documentation">
+	<header class="content-project-header">
+		<h2 class="content-project-title">@Title</h2>
+		<p class="content-project-subtitle">Document en lecture seule - derniere mise a jour : @LastUpdateLabel</p>
+	</header>
+
+	<section class="content-project-section" aria-label="Contexte">
+		<h3>1. Contexte du projet</h3>
+		<p>
+			Ce document presente une vue d ensemble du projet: objectif, architecture,
+			choix techniques et perspectives d evolution. L idee est de fournir une lecture simple
+			et fluide, comme un document PDF centralise.
+		</p>
+	</section>
+
+	<section class="content-project-section" aria-label="Objectifs">
+		<h3>2. Objectifs</h3>
+		<ul>
+			<li>Proposer une interface claire et performante.</li>
+			<li>Structurer une base evolutive pour les prochaines iterations.</li>
+			<li>Faciliter la maintenance avec une architecture lisible.</li>
+		</ul>
+	</section>
+
+	<section class="content-project-section" aria-label="Illustration">
+		<h3>3. Illustration</h3>
+		<figure class="content-project-figure">
+			<img src="@HeroImageUrl" alt="Illustration principale du projet" class="content-project-image" />
+			<figcaption>Apercu visuel du projet.</figcaption>
+		</figure>
+	</section>
+
+	<section class="content-project-section" aria-label="Video de presentation">
+		<h3>4. Video</h3>
+		<video class="content-project-video" controls preload="metadata" poster="@HeroImageUrl">
+			<source src="@VideoUrl" type="video/mp4" />
+		</video>
+		<p class="content-project-note">Si la video n est pas disponible localement, le lecteur restera en attente.</p>
+	</section>
+
+	<section class="content-project-section" aria-label="Conclusion">
+		<h3>5. Conclusion</h3>
+		<p>
+			Cette page sert de base de consultation pour la documentation des projets.
+			Dans une prochaine etape, chaque card projet pourra pointer vers son contenu specifique,
+			avec chargement dynamique des informations.
+		</p>
+	</section>
+</article>
+
+@code {
+	[Parameter] public string Title { get; set; } = "Projet - Vue generale";
+	[Parameter] public string LastUpdateLabel { get; set; } = "-";
+	[Parameter] public string HeroImageUrl { get; set; } = "/img/wallpaper_portefolio.png";
+	[Parameter] public string VideoUrl { get; set; } = "/videos/demo-project.mp4";
+}

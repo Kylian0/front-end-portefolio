@@ -1,7 +1,7 @@
 <!-- Barre de navigation principale -->
 <nav class="portfolio-nav" aria-label="Navigation principale">
 	<!-- Logo temporaire place a gauche -->
-	<div class="nav-logo" title="Logo temporaire">LOGO</div>
+	<a class="nav-logo" href="/" title="Retour a l accueil">LOGO</a>
 
 	<!-- Bouton menu visible surtout en mobile -->
 	<button
@@ -22,7 +22,7 @@
 	<!-- Zone des liens a droite -->
 	<div id="main-nav-links" class="nav-actions @(isMobileMenuOpen ? "is-open" : string.Empty)">
 		<!-- Lien vers la section des projets -->
-		<a class="nav-action" href="#mes-projets" @onclick="CloseMobileMenu">Mes projets</a>
+		<a class="nav-action" href="/projects" @onclick="CloseMobileMenu">Mes projets</a>
 		<!-- Lien vers la section CV -->
 		<a class="nav-action" href="#mon-cv" @onclick="CloseMobileMenu">Mon CV</a>
 		<!-- Lien vers la section contact -->

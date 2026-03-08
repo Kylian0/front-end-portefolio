@@ -1,0 +1,44 @@
+.doc-project-page {
+	min-height: 100dvh;
+	padding: 96px 1rem 2.2rem;
+	background:
+		radial-gradient(circle at 14% 10%, rgba(14, 165, 233, 0.1), transparent 36%),
+		radial-gradient(circle at 86% 88%, rgba(99, 102, 241, 0.1), transparent 34%),
+		linear-gradient(180deg, #e2e8f0 0%, #cbd5e1 100%);
+}
+
+.doc-project-shell {
+	max-width: 1120px;
+	margin: 0 auto;
+	display: grid;
+	justify-items: center;
+	gap: 1rem;
+}
+
+.doc-project-head {
+	width: min(100%, 900px);
+	padding: 0.65rem 0.1rem;
+	text-align: left;
+}
+
+.doc-project-kicker {
+	margin: 0;
+	font-size: 0.8rem;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: #0369a1;
+}
+
+.doc-project-title {
+	margin: 0.28rem 0 0;
+	font-size: clamp(1.3rem, 0.8vw + 1rem, 1.9rem);
+	line-height: 1.2;
+	color: #0f172a;
+}
+
+@media (max-width: 680px) {
+	.doc-project-page {
+		padding-top: 90px;
+	}
+}

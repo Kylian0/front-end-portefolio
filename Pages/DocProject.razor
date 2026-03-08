@@ -1,0 +1,29 @@
+@page "/view-project"
+@using FrontEndPortefolio.Components
+
+<PageTitle>Documentation Projet</PageTitle>
+
+<HeadContent>
+	<link rel="stylesheet" href="css/ComponentStyle/NavigationBar.css" />
+	<link rel="stylesheet" href="css/ComponentStyle/Footer.css" />
+	<link rel="stylesheet" href="css/ComponentStyle/ContentProject.css?v=1" />
+	<link rel="stylesheet" href="css/PageStyle/DocProject.css?v=1" />
+</HeadContent>
+
+<NavigationBar />
+
+<main class="doc-project-page" aria-label="Lecteur de documentation projet">
+	<section class="doc-project-shell">
+		<header class="doc-project-head">
+			<p class="doc-project-kicker">Documentation projet</p>
+		</header>
+
+		<ContentProject
+			Title="Portfolio V2"
+			LastUpdateLabel="08/03/2026"
+			HeroImageUrl="/img/wallpaper_portefolio.png"
+			VideoUrl="/videos/demo-project.mp4" />
+	</section>
+</main>
+
+<Footer />

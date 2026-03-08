@@ -1,0 +1,99 @@
+.content-project-page {
+	width: min(100%, 900px);
+	min-height: 1180px;
+	padding: clamp(1.1rem, 1.8vw, 1.6rem);
+	background: #ffffff;
+	border: 1px solid #d1d5db;
+	box-shadow:
+		0 1px 0 rgba(148, 163, 184, 0.45),
+		0 20px 38px rgba(15, 23, 42, 0.18);
+	color: #111827;
+	line-height: 1.58;
+}
+
+.content-project-header {
+	padding-bottom: 0.65rem;
+	border-bottom: 1px solid #e5e7eb;
+	margin-bottom: 1rem;
+}
+
+.content-project-title {
+	margin: 0;
+	font-size: clamp(1.2rem, 0.7vw + 1rem, 1.75rem);
+	line-height: 1.2;
+	color: #0f172a;
+}
+
+.content-project-subtitle {
+	margin: 0.35rem 0 0;
+	font-size: 0.9rem;
+	color: #4b5563;
+}
+
+.content-project-section {
+	margin-top: 1rem;
+}
+
+.content-project-section h3 {
+	margin: 0 0 0.45rem;
+	font-size: 1.02rem;
+	line-height: 1.3;
+	color: #0f172a;
+}
+
+.content-project-section p {
+	margin: 0;
+	font-size: 0.95rem;
+	color: #1f2937;
+}
+
+.content-project-section ul {
+	margin: 0;
+	padding-left: 1.15rem;
+	display: grid;
+	gap: 0.35rem;
+}
+
+.content-project-section li {
+	font-size: 0.95rem;
+	color: #1f2937;
+}
+
+.content-project-figure {
+	margin: 0;
+	display: grid;
+	gap: 0.35rem;
+}
+
+.content-project-image {
+	width: 100%;
+	height: auto;
+	max-height: 440px;
+	object-fit: cover;
+	border: 1px solid #d1d5db;
+}
+
+.content-project-figure figcaption {
+	font-size: 0.85rem;
+	color: #6b7280;
+}
+
+.content-project-video {
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	background: #0f172a;
+	border: 1px solid #d1d5db;
+}
+
+.content-project-note {
+	margin-top: 0.4rem;
+	font-size: 0.84rem;
+	color: #64748b;
+}
+
+@media (max-width: 680px) {
+	.content-project-page {
+		min-height: auto;
+		padding: 0.9rem;
+	}
+}
