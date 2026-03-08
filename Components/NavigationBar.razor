@@ -1,0 +1,48 @@
+<!-- Barre de navigation principale -->
+<nav class="portfolio-nav" aria-label="Navigation principale">
+	<!-- Logo temporaire place a gauche -->
+	<div class="nav-logo" title="Logo temporaire">LOGO</div>
+
+	<!-- Bouton menu visible surtout en mobile -->
+	<button
+		type="button"
+		class="nav-toggle @(isMobileMenuOpen ? "is-open" : string.Empty)"
+		aria-label="Ouvrir ou fermer le menu"
+		aria-expanded="@isMobileMenuOpen"
+		aria-controls="main-nav-links"
+		@onclick="ToggleMobileMenu">
+		<span class="nav-toggle-icon" aria-hidden="true">
+			<svg viewBox="0 0 24 24" focusable="false">
+				<circle cx="12" cy="12" r="8"></circle>
+				<path d="M12 7l2.8 5.2-5.6 2.8z"></path>
+			</svg>
+		</span>
+	</button>
+
+	<!-- Zone des liens a droite -->
+	<div id="main-nav-links" class="nav-actions @(isMobileMenuOpen ? "is-open" : string.Empty)">
+		<!-- Lien vers la section des projets -->
+		<a class="nav-action" href="#mes-projets" @onclick="CloseMobileMenu">Mes projets</a>
+		<!-- Lien vers la section CV -->
+		<a class="nav-action" href="#mon-cv" @onclick="CloseMobileMenu">Mon CV</a>
+		<!-- Lien vers la section contact -->
+		<a class="nav-action" href="#me-contacter" @onclick="CloseMobileMenu">Me contacter</a>
+	</div>
+</nav>
+
+@code {
+	// Etat du menu en version mobile
+	private bool isMobileMenuOpen;
+
+	// Ouvre ou ferme le menu quand on clique sur l'icone
+	private void ToggleMobileMenu()
+	{
+		isMobileMenuOpen = !isMobileMenuOpen;
+	}
+
+	// Referme le menu apres clic sur un lien
+	private void CloseMobileMenu()
+	{
+		isMobileMenuOpen = false;
+	}
+}

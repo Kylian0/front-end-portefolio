@@ -1,7 +1,163 @@
 ﻿@page "/"
+@using FrontEndPortefolio.Components
 
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world !</h1>
+<HeadContent>
+	<link rel="stylesheet" href="css/ComponentStyle/NavigationBar.css" />
+	<link rel="stylesheet" href="css/ComponentStyle/Footer.css" />
+	<link rel="stylesheet" href="css/PageStyle/Home.css?v=17" />
+</HeadContent>
 
-Hello World !
+<NavigationBar />
+
+<div class="home-hero">
+	<div class="home-hero-content">
+		<div class="home-welcome-card">
+			<h1 class="home-welcome-title">Bienvenue sur mon portfolio</h1>
+			<p class="home-welcome-subtitle">
+				Developpeur passionne par le web, le jeu video et les experiences interactives.
+				Installe-toi, je te montre mon univers.
+			</p>
+		</div>
+	</div>
+</div>
+
+<section class="projects-preview reveal-on-scroll reveal-projects" id="mes-projets" aria-label="Mes projets">
+	<div class="projects-preview-head reveal-on-scroll" style="--reveal-delay: 0.08s;">
+		<p class="projects-kicker">Mes projets</p>
+		<div class="projects-title-row">
+			<h2 class="projects-title">Choisis un projet</h2>
+			<button type="button" class="projects-more-btn">Voir plus</button>
+		</div>
+	</div>
+
+	<div class="projects-grid reveal-on-scroll" style="--reveal-delay: 0.14s;">
+		<a class="project-card reveal-on-scroll" style="--reveal-delay: 0.2s;" href="#project-web-app" aria-label="Ouvrir le projet Application Web">
+			<div class="project-media">
+				<img src="/img/wallpaper_portefolio.png" alt="Apercu du projet Application Web" class="project-image image-web" />
+				<h3 class="project-name">Application Web</h3>
+			</div>
+		</a>
+
+		<a class="project-card reveal-on-scroll" style="--reveal-delay: 0.28s;" href="#project-ui-ux" aria-label="Ouvrir le projet UI UX">
+			<div class="project-media">
+				<img src="/img/wallpaper_portefolio.png" alt="Apercu du projet UI UX" class="project-image image-ui" />
+				<h3 class="project-name">UI / UX Design</h3>
+			</div>
+		</a>
+
+		<a class="project-card reveal-on-scroll" style="--reveal-delay: 0.36s;" href="#project-game" aria-label="Ouvrir le projet Jeu Video">
+			<div class="project-media">
+				<img src="/img/wallpaper_portefolio.png" alt="Apercu du projet Jeu Video" class="project-image image-game" />
+				<h3 class="project-name">Jeu Video Prototype</h3>
+			</div>
+		</a>
+	</div>
+</section>
+
+<section class="cv-showcase reveal-cv" id="mon-cv" aria-label="Section Mon CV">
+	<div class="cv-shell reveal-on-scroll" style="--reveal-delay: 0.06s;">
+		<div class="cv-media-column">
+			<figure class="cv-image-frame">
+				<img src="/img/wallpaper_portefolio.png" alt="Illustration de mon profil developpeur" class="cv-image" />
+				<figcaption class="cv-image-caption">Mon profil en un coup d oeil</figcaption>
+			</figure>
+
+			<div class="cv-signal-grid" aria-label="Points forts">
+				<article class="cv-signal-card">
+					<p class="cv-signal-value">3+</p>
+					<p class="cv-signal-label">ans de pratique perso</p>
+				</article>
+				<article class="cv-signal-card">
+					<p class="cv-signal-value">10+</p>
+					<p class="cv-signal-label">projets scolaires et perso</p>
+				</article>
+			</div>
+		</div>
+
+		<div class="cv-content-column">
+			<p class="cv-kicker">Mon CV</p>
+			<h2 class="cv-title">Un profil curieux, rigoureux, et tres motive</h2>
+			<p class="cv-lead">
+				Je construis des interfaces web claires et vivantes, avec une vraie attention au detail, a l accessibilite et aux performances.
+			</p>
+			<p class="cv-body">
+				Mon objectif est simple: transformer une idee en produit concret, propre et evolutif.
+				J aime travailler sur tout le parcours: conception, implementation, tests et mise en ligne.
+			</p>
+
+			<ul class="cv-points" aria-label="Competences principales">
+				<li>Front-end: Blazor, HTML, CSS, JavaScript.</li>
+				<li>Back-end: bases solides en C# et architecture .NET.</li>
+				<li>Methodo: code lisible, versionning Git et amelioration continue.</li>
+			</ul>
+
+			<div class="cv-actions">
+				<button type="button" class="cv-primary-btn" title="Page CV bientot disponible">Voir mon CV</button>
+				<a href="#mes-projets" class="cv-secondary-link">Voir des exemples concrets</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="contact-preview reveal-contact" id="me-contacter" aria-label="Section Me contacter">
+	<div class="contact-shell reveal-on-scroll" style="--reveal-delay: 0.05s;">
+		<div class="contact-intro">
+			<p class="contact-kicker">Me contacter</p>
+			<h2 class="contact-title">Restons en contact</h2>
+			<p class="contact-lead">
+				Je reste disponible pour un echange professionnel autour du developpement web,
+				de la conception produit ou de toute collaboration technique.
+			</p>
+
+			<div class="contact-methods" aria-label="Moyens de contact">
+				<a class="contact-method reveal-on-scroll" style="--reveal-delay: 0.12s;" href="mailto:ton.email@exemple.com" aria-label="Envoyer un email">
+					<span class="contact-method-label">Email</span>
+					<span class="contact-method-value">ton.email@exemple.com</span>
+				</a>
+
+				<a class="contact-method reveal-on-scroll" style="--reveal-delay: 0.2s;" href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir LinkedIn">
+					<span class="contact-method-label">LinkedIn</span>
+					<span class="contact-method-value">linkedin.com/in/tonprofil</span>
+				</a>
+
+				<a class="contact-method reveal-on-scroll" style="--reveal-delay: 0.28s;" href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir GitHub">
+					<span class="contact-method-label">GitHub</span>
+					<span class="contact-method-value">github.com/tonpseudo</span>
+				</a>
+			</div>
+		</div>
+
+		<div class="contact-panel reveal-on-scroll" style="--reveal-delay: 0.16s;" role="form" aria-label="Formulaire de contact">
+			<div class="contact-field-grid">
+				<div class="contact-field">
+					<label for="contact-name">Nom</label>
+					<input id="contact-name" type="text" placeholder="Votre nom" />
+				</div>
+
+				<div class="contact-field">
+					<label for="contact-mail">Email</label>
+					<input id="contact-mail" type="email" placeholder="votre.email@exemple.com" />
+				</div>
+			</div>
+
+			<div class="contact-field">
+				<label for="contact-subject">Sujet</label>
+				<input id="contact-subject" type="text" placeholder="Objet de votre message" />
+			</div>
+
+			<div class="contact-field">
+				<label for="contact-message">Message</label>
+				<textarea id="contact-message" rows="5" placeholder="Decrivez votre message en quelques lignes..."></textarea>
+			</div>
+
+			<div class="contact-panel-actions">
+				<button type="button" class="contact-send-btn" title="Formulaire connecte bientot">Envoyer un message</button>
+				<span class="contact-panel-note">Une reponse vous sera transmise dans les meilleurs delais.</span>
+			</div>
+		</div>
+	</div>
+</section>
+
+<Footer />
