@@ -1,0 +1,102 @@
+@if (IsOpen)
+{
+	<div class="filters-modal-backdrop" @onclick="HandleBackdropClick">
+		<section class="filters-modal" aria-label="Filtres projets" @onclick:stopPropagation="true">
+			<header class="filters-modal-head">
+				<h2 class="filters-modal-title">Filtres</h2>
+			</header>
+
+			<div class="filters-modal-body">
+				<div class="filters-group">
+					<h3 class="filters-group-title">Langages</h3>
+					<div class="filters-static-grid">
+						<button type="button" class='@GetButtonClass("filters-option-btn", "lang-csharp")' @onclick='() => ToggleButton("lang-csharp")'>C#</button>
+						<button type="button" class='@GetButtonClass("filters-option-btn", "lang-ts")' @onclick='() => ToggleButton("lang-ts")'>TypeScript</button>
+						<button type="button" class='@GetButtonClass("filters-option-btn", "lang-js")' @onclick='() => ToggleButton("lang-js")'>JavaScript</button>
+						<button type="button" class='@GetButtonClass("filters-option-btn", "lang-python")' @onclick='() => ToggleButton("lang-python")'>Python</button>
+						<button type="button" class='@GetButtonClass("filters-option-btn", "lang-dart")' @onclick='() => ToggleButton("lang-dart")'>Dart</button>
+						<button type="button" class='@GetButtonClass("filters-option-btn", "lang-swift")' @onclick='() => ToggleButton("lang-swift")'>Swift</button>
+					</div>
+				</div>
+
+				<div class="filters-group">
+					<h3 class="filters-group-title">Frameworks</h3>
+					<div class="filters-static-grid">
+						<button type="button" class='@GetButtonClass("filters-option-btn", "fw-blazor")' @onclick='() => ToggleButton("fw-blazor")'>Blazor</button>
+						<button type="button" class='@GetButtonClass("filters-option-btn", "fw-react")' @onclick='() => ToggleButton("fw-react")'>React</button>
+						<button type="button" class='@GetButtonClass("filters-option-btn", "fw-vue")' @onclick='() => ToggleButton("fw-vue")'>Vue</button>
+						<button type="button" class='@GetButtonClass("filters-option-btn", "fw-dotnet")' @onclick='() => ToggleButton("fw-dotnet")'>.NET</button>
+						<button type="button" class='@GetButtonClass("filters-option-btn", "fw-unity")' @onclick='() => ToggleButton("fw-unity")'>Unity</button>
+						<button type="button" class='@GetButtonClass("filters-option-btn", "fw-flutter")' @onclick='() => ToggleButton("fw-flutter")'>Flutter</button>
+					</div>
+				</div>
+
+				<div class="filters-group">
+					<h3 class="filters-group-title">Type d application</h3>
+					<div class="filters-static-grid">
+						<button type="button" class='@GetButtonClass("filters-option-btn", "type-web")' @onclick='() => ToggleButton("type-web")'>Application web</button>
+						<button type="button" class='@GetButtonClass("filters-option-btn", "type-mobile")' @onclick='() => ToggleButton("type-mobile")'>Application mobile</button>
+						<button type="button" class='@GetButtonClass("filters-option-btn", "type-game")' @onclick='() => ToggleButton("type-game")'>Jeux video</button>
+						<button type="button" class='@GetButtonClass("filters-option-btn", "type-mobile-game")' @onclick='() => ToggleButton("type-mobile-game")'>Jeux video mobile</button>
+					</div>
+				</div>
+
+				<div class="filters-group">
+					<h3 class="filters-group-title">Date</h3>
+					<div class="filters-sort-buttons" aria-label="Tri date">
+						<button type="button" class='@GetButtonClass("filters-sort-btn", "sort-croissant")' @onclick='() => ToggleButton("sort-croissant")'>Croissant</button>
+						<button type="button" class='@GetButtonClass("filters-sort-btn", "sort-decroissant")' @onclick='() => ToggleButton("sort-decroissant")'>Decroissant</button>
+					</div>
+				</div>
+			</div>
+
+			<footer class="filters-modal-actions">
+				<button type="button" class="filters-cancel-btn" @onclick="CloseAsync">Annuler</button>
+				<button type="button" class="filters-apply-btn" @onclick="CloseAsync">Appliquer</button>
+			</footer>
+		</section>
+	</div>
+}
+
+@code {
+	[Parameter] public bool IsOpen { get; set; }
+
+	[Parameter] public EventCallback OnClose { get; set; }
+
+	private bool wasOpen;
+	private readonly HashSet<string> selectedButtons = new(StringComparer.OrdinalIgnoreCase);
+
+	protected override void OnParametersSet()
+	{
+		if (IsOpen && !wasOpen)
+		{
+			selectedButtons.Clear();
+		}
+
+		wasOpen = IsOpen;
+	}
+
+	private string GetButtonClass(string baseClass, string key)
+	{
+		return selectedButtons.Contains(key) ? $"{baseClass} is-selected" : baseClass;
+	}
+
+	private void ToggleButton(string key)
+	{
+		if (!selectedButtons.Add(key))
+		{
+			selectedButtons.Remove(key);
+		}
+	}
+
+	private Task HandleBackdropClick()
+	{
+		return CloseAsync();
+	}
+
+	private Task CloseAsync()
+	{
+		selectedButtons.Clear();
+		return OnClose.InvokeAsync();
+	}
+}

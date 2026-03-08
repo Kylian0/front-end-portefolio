@@ -1,0 +1,98 @@
+@page "/projects"
+@using FrontEndPortefolio.Components
+
+<PageTitle>Mes projets</PageTitle>
+
+<HeadContent>
+	<link rel="stylesheet" href="css/ComponentStyle/NavigationBar.css" />
+	<link rel="stylesheet" href="css/ComponentStyle/Footer.css" />
+	<link rel="stylesheet" href="css/ComponentStyle/ProjectCard.css" />
+	<link rel="stylesheet" href="css/ComponentStyle/PopUpFiltres.css" />
+	<link rel="stylesheet" href="css/PageStyle/Project.css" />
+</HeadContent>
+
+<NavigationBar />
+
+<main class="projects-page" aria-label="Page Mes projets">
+	<section class="projects-toolbar-section" aria-label="Recherche et filtres">
+		<div class="projects-toolbar-shell">
+			<div class="projects-toolbar">
+				<div class="search-box">
+					<input
+						type="search"
+						class="projects-search-input"
+						placeholder="Rechercher un projet..." />
+				</div>
+
+				<button type="button" class="filters-open-btn" @onclick="OpenFilterPopup">
+					Filtres
+				</button>
+			</div>
+		</div>
+	</section>
+
+	<section class="projects-list-section" aria-label="Liste des projets">
+		<div class="projects-grid-shell">
+			<div class="projects-grid">
+				@foreach (var project in projects)
+				{
+					<ProjectCard
+						Title="@project.Title"
+						ImageUrl="@project.ImageUrl"
+						Language="@project.Language"
+						Framework="@project.Framework"
+						ApplicationType="@project.ApplicationType"
+						Date="@project.Date"
+						Href="@project.Href" />
+				}
+			</div>
+		</div>
+	</section>
+</main>
+
+<PopUpFiltres
+	IsOpen="isFilterPopupOpen"
+	OnClose="CloseFilterPopup" />
+
+<Footer />
+
+@code {
+	private bool isFilterPopupOpen;
+
+	private readonly List<ProjectItem> projects =
+	[
+		new("Portfolio V2", "C#", "Blazor", "Application web", new DateTime(2026, 2, 10), "/img/wallpaper_portefolio.png", "#project-portfolio-v2"),
+		new("TaskFlow", "TypeScript", "React", "Application web", new DateTime(2026, 1, 18), "/img/wallpaper_portefolio.png", "#project-taskflow"),
+		new("Space Runner", "C#", "Unity", "Jeux video", new DateTime(2025, 12, 2), "/img/wallpaper_portefolio.png", "#project-space-runner"),
+		new("Pulse Mobile", "Dart", "Flutter", "Application mobile", new DateTime(2025, 11, 14), "/img/wallpaper_portefolio.png", "#project-pulse-mobile"),
+		new("Shop API", "C#", ".NET", "Application web", new DateTime(2025, 10, 22), "/img/wallpaper_portefolio.png", "#project-shop-api"),
+		new("Hero Dashboard", "JavaScript", "Vue", "Application web", new DateTime(2025, 9, 6), "/img/wallpaper_portefolio.png", "#project-hero-dashboard"),
+		new("Pixel Battle", "C++", "Unreal", "Jeux video", new DateTime(2025, 8, 2), "/img/wallpaper_portefolio.png", "#project-pixel-battle"),
+		new("MoveFit", "Kotlin", "Android SDK", "Application mobile", new DateTime(2025, 7, 18), "/img/wallpaper_portefolio.png", "#project-movefit"),
+		new("Puzzle Dash Mobile", "C#", "Unity", "Jeux video mobile", new DateTime(2025, 6, 11), "/img/wallpaper_portefolio.png", "#project-puzzle-dash-mobile"),
+		new("Media Explorer", "Python", "Django", "Application web", new DateTime(2025, 5, 7), "/img/wallpaper_portefolio.png", "#project-media-explorer"),
+		new("Arena Prototype", "C#", "Godot", "Jeux video", new DateTime(2025, 4, 15), "/img/wallpaper_portefolio.png", "#project-arena-prototype"),
+		new("Food Route", "Swift", "SwiftUI", "Application mobile", new DateTime(2025, 3, 2), "/img/wallpaper_portefolio.png", "#project-food-route"),
+		new("Nebula Tactics", "C#", "Unity", "Jeux video mobile", new DateTime(2025, 2, 11), "/img/wallpaper_portefolio.png", "#project-nebula-tactics"),
+		new("Studio CMS", "PHP", "Laravel", "Application web", new DateTime(2025, 1, 20), "/img/wallpaper_portefolio.png", "#project-studio-cms")
+	];
+
+	private void OpenFilterPopup()
+	{
+		isFilterPopupOpen = true;
+	}
+
+	private void CloseFilterPopup()
+	{
+		isFilterPopupOpen = false;
+	}
+
+	private sealed record ProjectItem(
+		string Title,
+		string Language,
+		string Framework,
+		string ApplicationType,
+		DateTime Date,
+		string ImageUrl,
+		string Href);
+}

@@ -1,0 +1,29 @@
+<article class="project-card-item" aria-label="@Title">
+	<a class="project-card-link" href="@Href" aria-label="Ouvrir @Title">
+		<div class="project-card-media">
+			<img src="@ImageUrl" alt="Apercu de @Title" class="project-card-image" />
+
+			<div class="project-card-content">
+				<h3 class="project-card-title">@Title</h3>
+				<p class="project-card-meta">@ApplicationType</p>
+
+				<div class="project-card-tags" aria-label="Technologies">
+					<span class="project-card-tag">@Language</span>
+					<span class="project-card-tag">@Framework</span>
+				</div>
+
+				<p class="project-card-date">@Date.ToString("dd/MM/yyyy")</p>
+			</div>
+		</div>
+	</a>
+</article>
+
+@code {
+	[Parameter] public string Title { get; set; } = string.Empty;
+	[Parameter] public string ImageUrl { get; set; } = "/img/wallpaper_portefolio.png";
+	[Parameter] public string Language { get; set; } = string.Empty;
+	[Parameter] public string Framework { get; set; } = string.Empty;
+	[Parameter] public string ApplicationType { get; set; } = string.Empty;
+	[Parameter] public DateTime Date { get; set; } = DateTime.Today;
+	[Parameter] public string Href { get; set; } = "#";
+}

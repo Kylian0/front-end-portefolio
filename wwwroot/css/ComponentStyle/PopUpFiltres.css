@@ -1,0 +1,178 @@
+﻿.filters-modal-backdrop {
+position: fixed;
+inset: 0;
+z-index: 120;
+display: grid;
+place-items: center;
+padding: 1rem;
+background: rgba(2, 6, 23, 0.58);
+backdrop-filter: blur(3px);
+-webkit-backdrop-filter: blur(3px);
+}
+
+.filters-modal {
+width: min(760px, 96vw);
+max-height: min(88dvh, 860px);
+overflow: auto;
+background: #f8fafc;
+border: 1px solid #cbd5e1;
+box-shadow: 0 20px 40px rgba(2, 6, 23, 0.32);
+animation: filters-pop-in 0.2s ease-out both;
+}
+
+.filters-modal-head {
+padding: 0.95rem 1rem 0.35rem;
+border-bottom: 1px solid #e2e8f0;
+}
+
+.filters-modal-title {
+margin: 0;
+font-size: 1.15rem;
+line-height: 1.2;
+color: #0f172a;
+}
+
+.filters-modal-body {
+display: grid;
+gap: 0.95rem;
+padding: 0.9rem 1rem;
+}
+
+.filters-group {
+padding: 0.7rem;
+background: rgba(255, 255, 255, 0.9);
+border: 1px solid #dbe5f0;
+}
+
+.filters-group-title {
+margin: 0 0 0.55rem;
+font-size: 0.95rem;
+line-height: 1.2;
+color: #0f172a;
+}
+
+.filters-static-grid {
+display: flex;
+flex-wrap: wrap;
+gap: 0.45rem;
+}
+
+.filters-sort-buttons {
+display: flex;
+gap: 0.55rem;
+flex-wrap: wrap;
+}
+
+.filters-option-btn,
+.filters-sort-btn {
+display: inline-flex;
+align-items: center;
+padding: 0.32rem 0.56rem;
+font: inherit;
+font-size: 0.82rem;
+font-weight: 700;
+line-height: 1.2;
+color: #0f4c6e;
+background: #ffffff;
+border: 1px solid #bae6fd;
+cursor: pointer;
+transition: transform 0.16s ease, box-shadow 0.16s ease, background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+
+.filters-option-btn:hover,
+.filters-sort-btn:hover {
+background: #f8fafc;
+border-color: #7dd3fc;
+transform: translateY(-1px);
+box-shadow: 0 6px 12px rgba(15, 23, 42, 0.1);
+}
+
+.filters-option-btn:active,
+.filters-sort-btn:active {
+transform: translateY(0);
+box-shadow: none;
+}
+
+.filters-option-btn:focus-visible,
+.filters-sort-btn:focus-visible,
+.filters-cancel-btn:focus-visible,
+.filters-apply-btn:focus-visible {
+outline: 2px solid #6366f1;
+outline-offset: 2px;
+}
+
+.filters-option-btn.is-selected,
+.filters-sort-btn.is-selected {
+color: #0f4c6e;
+background: #e0f2fe;
+border-color: #7dd3fc;
+}
+
+.filters-option-btn.is-selected:hover,
+.filters-sort-btn.is-selected:hover {
+background: #d0ecff;
+border-color: #38bdf8;
+}
+
+.filters-modal-actions {
+display: flex;
+justify-content: flex-end;
+align-items: center;
+gap: 0.65rem;
+padding: 0.7rem 1rem 1rem;
+border-top: 1px solid #e2e8f0;
+background: rgba(241, 245, 249, 0.65);
+position: sticky;
+bottom: 0;
+}
+
+.filters-cancel-btn,
+.filters-apply-btn {
+padding: 0.55rem 0.82rem;
+font: inherit;
+font-size: 0.9rem;
+font-weight: 700;
+border: 1px solid transparent;
+cursor: pointer;
+transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.filters-cancel-btn {
+color: #334155;
+background: #f8fafc;
+border-color: #cbd5e1;
+}
+
+.filters-cancel-btn:hover {
+background: #f1f5f9;
+transform: translateY(-1px);
+}
+
+.filters-apply-btn {
+color: #f8fafc;
+background: linear-gradient(140deg, #0ea5e9, #14b8a6);
+border-color: #0b7faf;
+}
+
+.filters-apply-btn:hover {
+transform: translateY(-1px);
+box-shadow: 0 10px 18px rgba(14, 165, 233, 0.24);
+}
+
+@keyframes filters-pop-in {
+0% {
+opacity: 0;
+transform: translateY(10px) scale(0.985);
+}
+100% {
+opacity: 1;
+transform: translateY(0) scale(1);
+}
+}
+
+@media (max-width: 700px) {
+.filters-static-grid,
+.filters-sort-buttons {
+gap: 0.4rem;
+}
+}
