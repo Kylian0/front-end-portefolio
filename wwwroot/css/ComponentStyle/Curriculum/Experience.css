@@ -1,0 +1,129 @@
+.cv-main-block-experiences {
+	display: flex;
+	flex-direction: column;
+	min-height: 0;
+}
+
+.cv-main-block-experiences h2 {
+	margin: 0;
+	font-size: 1.04rem;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: #0f172a;
+	padding-bottom: 0.36rem;
+	border-bottom: 2px solid #0e7490;
+}
+
+.cv-exp-item {
+	margin-top: 0.95rem;
+	padding-bottom: 0.8rem;
+	border-bottom: 1px dashed #cbd5e1;
+}
+
+.cv-exp-item:last-child {
+	border-bottom: 0;
+	padding-bottom: 0;
+}
+
+.cv-exp-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	gap: 1rem;
+}
+
+.cv-exp-header h3 {
+	margin: 0;
+	font-size: 1rem;
+	line-height: 1.25;
+	color: #0f172a;
+}
+
+.cv-exp-date {
+	margin: 0;
+	font-size: 0.79rem;
+	font-weight: 700;
+	color: #0369a1;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	text-align: right;
+	white-space: nowrap;
+}
+
+.cv-exp-company {
+	margin: 0.32rem 0 0;
+	font-size: 0.88rem;
+	font-weight: 600;
+	color: #334155;
+}
+
+.cv-exp-summary {
+	margin: 0.35rem 0 0;
+	font-size: 0.91rem;
+	line-height: 1.5;
+	color: #1e293b;
+}
+
+.cv-exp-pager {
+	margin-top: 1rem;
+	display: grid;
+	grid-template-columns: 2.2rem 1fr 2.2rem;
+	align-items: center;
+	gap: 0.6rem;
+	padding-top: 0.7rem;
+	border-top: 1px solid #dbe5ef;
+	width: 100%;
+	min-height: 2.6rem;
+}
+
+.cv-main-block-experiences .cv-exp-pager {
+	margin-top: auto;
+}
+
+.cv-exp-pager-btn {
+	width: 2.2rem;
+	height: 2.2rem;
+	padding: 0;
+	border: 1px solid #0e7490;
+	background: #f0f9ff;
+	color: #0f172a;
+	font-size: 1rem;
+	font-weight: 600;
+	line-height: 1;
+	cursor: pointer;
+}
+
+.cv-exp-pager-btn:first-child {
+	justify-self: start;
+}
+
+.cv-exp-pager-btn:last-child {
+	justify-self: end;
+}
+
+.cv-exp-pager-btn:disabled {
+	opacity: 0.4;
+	cursor: not-allowed;
+}
+
+.cv-exp-pager-label {
+	margin: 0;
+	font-size: 0.82rem;
+	font-weight: 600;
+	color: #334155;
+	text-align: center;
+	justify-self: center;
+	white-space: nowrap;
+}
+
+@media (max-width: 680px) {
+	.cv-exp-header {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.25rem;
+	}
+
+	.cv-exp-date {
+		text-align: left;
+	}
+}

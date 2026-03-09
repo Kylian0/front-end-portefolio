@@ -1,0 +1,22 @@
+.cv-main-block-competences h2 {
+	margin: 0;
+	font-size: 1.04rem;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: #0f172a;
+	padding-bottom: 0.36rem;
+	border-bottom: 2px solid #0e7490;
+}
+
+.cv-skills-list {
+	margin: 0.9rem 0 0;
+	padding-left: 1.1rem;
+	display: grid;
+	gap: 0.38rem;
+}
+
+.cv-skills-list li {
+	font-size: 0.91rem;
+	line-height: 1.44;
+	color: #1e293b;
+}

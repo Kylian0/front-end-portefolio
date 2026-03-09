@@ -1,0 +1,115 @@
+<section class="cv-main-block cv-main-block-experiences" aria-label="Experiences">
+	<h2>Experiences</h2>
+
+	@foreach (var experience in VisibleExperiences)
+	{
+		<article class="cv-exp-item">
+			<div class="cv-exp-header">
+				<h3>@experience.JobTitle</h3>
+				<p class="cv-exp-date">@experience.DateLabel</p>
+			</div>
+			<p class="cv-exp-company">@experience.CompanyCity</p>
+			<p class="cv-exp-summary">@experience.Summary</p>
+		</article>
+	}
+
+	<div class="cv-exp-pager" role="navigation" aria-label="Navigation des experiences">
+		<button class="cv-exp-pager-btn" @onclick="ShowNewerExperiences" disabled="@IsFirstPage" aria-label="Experiences plus recentes">&lt;</button>
+		<p class="cv-exp-pager-label">Page @CurrentPage / @TotalPages</p>
+		<button class="cv-exp-pager-btn" @onclick="ShowOlderExperiences" disabled="@IsLastPage" aria-label="Experiences plus anciennes">&gt;</button>
+	</div>
+</section>
+
+@code {
+	private const int MaxExperienceUnitsPerPage = 52;
+	private const int SummaryCharsPerLine = 86;
+	private const int TitleCharsPerLine = 34;
+	private const int CompanyCharsPerLine = 40;
+	private int _currentPageIndex;
+
+	private readonly List<ExperienceItem> _experiences = new()
+	{
+		new("Developpeur Unity", "Octobre 2025", "Resine Media - Draguignan", "Developpement d un jeu video en realite virtuelle pour la visite historique de la ville de Draguignan."),
+		new("Developpeur Unity", "Septembre - Octobre 2025", "Resine Media - Draguignan", "Developpement d un jeu video educatif de type Endless Runner pour des associations."),
+		new("Developpeur Web", "Decembre 2024 - Fevrier 2025", "Resine Media - Draguignan", "Developpement d un projet web interactif de balade numerique autour de la ville."),
+		new("Developpeur Fullstack - Stage", "Avril 2024 - Juin 2024", "Dis-Leurs - Sete", "Developpement d une application mobile pour une entreprise de media local."),
+		new("Developpeur Web Fullstack - Evaluation", "Decembre 2023", "BeWeb - Beziers", "Developpement d un site vitrine pour une entreprise bancaire."),
+		new("Exp fictive", "Juin 2023 - Novembre 2023", "Exp fictive - Toulon", "Participation fictive a la maintenance d une plateforme interne et correction de bugs fonctionnels."),
+		new("Exp fictive", "Janvier 2023 - Mai 2023", "Exp fictive - Marseille", "Contribution fictive a une interface web orientee suivi de projet avec optimisation de performance."),
+		new("Exp fictive", "Juillet 2022 - Decembre 2022", "Exp fictive - Nice", "Realisation fictive de modules front-end et integration de maquettes pour un portail metier."),
+		new("Exp fictive", "Mars 2022 - Juin 2022", "Exp fictive - Cannes", "Appui fictif au developpement d un back-office, tests et correction d incidents techniques."),
+		new("Exp fictive", "Septembre 2021 - Fevrier 2022", "Exp fictive - Montpellier", "Mise en place fictive de nouvelles pages applicatives et suivi de retours utilisateurs."),
+		new("Exp fictive", "Janvier 2021 - Aout 2021", "Exp fictive - Nimes", "Intervention fictive sur un projet de modernisation web avec documentation technique associee.")
+	};
+
+	private List<List<ExperienceItem>> _experiencePages = new();
+
+	protected override void OnInitialized()
+	{
+		_experiencePages = BuildExperiencePages();
+	}
+
+	private List<List<ExperienceItem>> BuildExperiencePages()
+	{
+		var pages = new List<List<ExperienceItem>>();
+		var currentPage = new List<ExperienceItem>();
+		var usedUnits = 0;
+
+		foreach (var experience in _experiences)
+		{
+			var experienceUnits = EstimateExperienceUnits(experience);
+
+			if (currentPage.Count > 0 && usedUnits + experienceUnits > MaxExperienceUnitsPerPage)
+			{
+				pages.Add(currentPage);
+				currentPage = new List<ExperienceItem>();
+				usedUnits = 0;
+			}
+
+			currentPage.Add(experience);
+			usedUnits += experienceUnits;
+		}
+
+		if (currentPage.Count > 0)
+		{
+			pages.Add(currentPage);
+		}
+
+		return pages;
+	}
+
+	private static int EstimateExperienceUnits(ExperienceItem experience)
+	{
+		var titleLines = Math.Max(1, (int)Math.Ceiling(experience.JobTitle.Length / (double)TitleCharsPerLine));
+		var companyLines = Math.Max(1, (int)Math.Ceiling(experience.CompanyCity.Length / (double)CompanyCharsPerLine));
+		var summaryLines = Math.Max(1, (int)Math.Ceiling(experience.Summary.Length / (double)SummaryCharsPerLine));
+
+		return 3 + titleLines + companyLines + summaryLines;
+	}
+
+	private int TotalPages => _experiencePages.Count;
+	private int CurrentPage => _currentPageIndex + 1;
+	private bool IsFirstPage => _currentPageIndex <= 0;
+	private bool IsLastPage => _currentPageIndex >= TotalPages - 1;
+
+	private IEnumerable<ExperienceItem> VisibleExperiences =>
+		TotalPages == 0 ? Array.Empty<ExperienceItem>() : _experiencePages[_currentPageIndex];
+
+	private void ShowOlderExperiences()
+	{
+		if (!IsLastPage)
+		{
+			_currentPageIndex++;
+		}
+	}
+
+	private void ShowNewerExperiences()
+	{
+		if (!IsFirstPage)
+		{
+			_currentPageIndex--;
+		}
+	}
+
+	private sealed record ExperienceItem(string JobTitle, string DateLabel, string CompanyCity, string Summary);
+}

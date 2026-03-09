@@ -1,0 +1,39 @@
+.cv-block {
+	padding: 0.78rem 0.72rem 0.82rem;
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid rgba(186, 230, 253, 0.22);
+	border-left: 3px solid rgba(186, 230, 253, 0.5);
+}
+
+.cv-block h2 {
+	margin: 0;
+	font-size: 0.8rem;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: #d9f3ff;
+	padding-bottom: 0.42rem;
+	border-bottom: 1px solid rgba(186, 230, 253, 0.42);
+}
+
+.cv-block ul {
+	margin: 0.72rem 0 0;
+	padding-left: 1rem;
+	display: grid;
+	gap: 0.5rem;
+}
+
+.cv-block li {
+	font-size: 0.88rem;
+	line-height: 1.48;
+	color: #f0f9ff;
+}
+
+.cv-block li::marker {
+	color: #bae6fd;
+}
+
+@media (max-width: 980px) {
+	.cv-block {
+		padding: 0.7rem 0.65rem 0.75rem;
+	}
+}

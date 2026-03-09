@@ -1,0 +1,35 @@
+@page "/view-cv"
+@page "/cv"
+@using FrontEndPortefolio.Components
+@using FrontEndPortefolio.Components.Curriculum
+
+<PageTitle>CV - Garnier Kylian</PageTitle>
+
+<NavigationBar />
+
+<main class="viewcv-page" aria-label="Page CV">
+	<section class="cv-canvas-sheet" aria-label="CV de Garnier Kylian">
+		<header class="cv-topbar" aria-label="Identite professionnelle">
+			<p class="cv-role">DEVELOPPEUR FULLSTACK</p>
+			<h1 class="cv-name">Garnier Kylian</h1>
+		</header>
+
+		<div class="cv-columns" aria-label="Contenu du CV">
+			<aside class="cv-left-column" aria-label="Informations personnelles et parcours">
+				<Information />
+				<Formation />
+				<SavoirEtre />
+				<Logiciel />
+				<Langue />
+				<Hobbies />
+			</aside>
+
+			<div class="cv-right-column" aria-label="Competences et experiences">
+				<Competence />
+				<Experience />
+			</div>
+		</div>
+	</section>
+</main>
+
+<Footer />
